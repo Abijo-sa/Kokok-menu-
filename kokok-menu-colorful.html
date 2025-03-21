@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOKOK - Menú de Gomitas Enchiladas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+        }
+        
+        body {
+            background-image: linear-gradient(to bottom right, #ffcc66, #ff9966, #ff99cc, #cc99ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .menu-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            max-width: 900px;
+            width: 100%;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 8px solid white;
+        }
+
+        .logo-container {
+            background: linear-gradient(135deg, #ff4500 0%, #ffdb58 33%, #00ced1 66%, #ff6b6b 100%);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-text {
+            font-size: 70px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 4px 4px 0 #ff4500, 
+                         -2px -2px 0 #000, 
+                         2px -2px 0 #000, 
+                         -2px 2px 0 #000, 
+                         2px 2px 0 #000;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.05);
+            }
+        }
+
+        .logo-subtitle {
+            font-size: 26px;
+            color: white;
+            text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+            letter-spacing: 5px;
+            position: relative;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 30px;
+            margin-top: 5px;
+        }
+
+        .chili-icon {
+            font-size: 50px;
+            position: absolute;
+            top: 40%;
+            right: 22%;
+            transform: translateY(-50%) rotate(20deg);
+            z-index: 1;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .candy-icon {
+            font-size: 50px;
+            position: absolute;
+            top: 60%;
+            left: 22%;
+            transform: translateY(-50%) rotate(-20deg);
+            z-index: 1;
+            animation: float 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(-50%) rotate(-5deg);
+            }
+            50% {
+                transform: translateY(-60%) rotate(5deg);
+            }
+            100% {
+                transform: translateY(-50%) rotate(-5deg);
+            }
+        }
+
+        .splash {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(10px);
+            opacity: 0.7;
+        }
+
+        .splash:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            background-color: rgba(255, 69, 0, 0.6);
+            width: 120px;
+            height: 120px;
+        }
+
+        .splash:nth-child(2) {
+            top: 30%;
+            right: 20%;
+            background-color: rgba(0, 206, 209, 0.6);
+            width: 100px;
+            height: 100px;
+        }
+
+        .splash:nth-child(3) {
+            bottom: 10%;
+            left: 30%;
+            background-color: rgba(255, 219, 88, 0.6);
+            width: 150px;
+            height: 150px;
+        }
+
+        .splash:nth-child(4) {
+            bottom: 30%;
+            right: 10%;
+            background-color: rgba(76, 175, 80, 0.6);
+            width: 130px;
+            height: 130px;
+        }
+
+        .menu-title {
+            text-align: center;
+            padding: 20px 0;
+            background: linear-gradient(to right, #ff6b6b, #ff9966, #ffcc66, #99ff99, #66ccff, #cc99ff);
+            position: relative;
+        }
+
+        .menu-title h2 {
+            font-size: 32px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-items {
+            padding: 25px 35px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z' fill='rgba(200, 200, 200, 0.1)' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 15px 20px;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.3s;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 8px solid;
+        }
+
+        .item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-1 { border-left-color: #FF9933; /* naranja mango */ }
+        .item-2 { border-left-color: #FF5252; /* rojo ácido */ }
+        .item-3 { border-left-color: #E91E63; /* rosa chamoy */ }
+        .item-4 { border-left-color: #FF4081; /* rosa frutas */ }
+        .item-5 { border-left-color: #76FF03; /* verde lima */ }
+        .item-6 { border-left-color: #2196F3; /* azul mora */ }
+        .item-7 { border-left-color: #FF9800; /* naranja arcoiris */ }
+        .item-8 { border-left-color: #8BC34A; /* verde manzana */ }
+
+        .item-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .item-name::before {
+            margin-right: 15px;
+            font-size: 30px;
+        }
+
+        .item-1 .item-name::before { content: "🥭"; } /* Mangonazos - mango */
+        .item-2 .item-name::before { content: "🧸"; } /* Ositos traviesos - osito */
+        .item-3 .item-name::before { content: "🧸🌶️"; } /* Ositos chamoyosos - osito con chile */
+        .item-4 .item-name::before { content: "🍓"; } /* Frutibombas - fresa */
+        .item-5 .item-name::before { content: "🐛"; } /* Gusanos loquillos - gusanito */
+        .item-6 .item-name::before { content: "🫐"; } /* Azulines - mora azul */
+        .item-7 .item-name::before { content: "🌈"; } /* Colorines - arcoiris */
+        .item-8 .item-name::before { content: "🍎"; } /* ChiliManzanita - manzana */
+
+        .item-description {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .item-price {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .item-1 .item-price { background-color: #FF9933; }
+        .item-2 .item-price { background-color: #FF5252; }
+        .item-3 .item-price { background-color: #E91E63; }
+        .item-4 .item-price { background-color: #FF4081; }
+        .item-5 .item-price { background-color: #76FF03; }
+        .item-6 .item-price { background-color: #2196F3; }
+        .item-7 .item-price { background-color: #FF9800; }
+        .item-8 .item-price { background-color: #8BC34A; }
+
+        .footer {
+            background: linear-gradient(135deg, #ff4500 0%, #ffdb58 33%, #00ced1 66%, #ff6b6b 100%);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            font-size: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20.83l2.83-2.83 1.41 1.41L1.41 22.24H0v-1.41zM22.24 0l2.83 2.83-1.41 1.41L21.41 1.41V0h.83zM40 18.59l-2.83 2.83-1.41-1.41L38.59 18H40v.59zM40 38.59l-2.83 2.83-1.41-1.41L38.59 40H40v-1.41zM20.83 40l-2.83-2.83 1.41-1.41 2.83 2.83V40h-1.41zM1.41 0L0 1.41v.83l2.83-2.83L1.41 0zM18.59 40l-2.83-2.83 1.41-1.41 2.83 2.83V40h-1.41z'/%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            z-index: 1;
+            animation: bubbleFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes bubbleFloat {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-20px) scale(1.1);
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .menu-card {
+                box-shadow: none;
+                max-width: 100%;
+            }
+            .item:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-card">
+        <div class="logo-container">
+            <!-- Efectos de splash de colores -->
+            <div class="splash"></div>
+            <div class="splash"></div>
+            <div class="splash"></div>
+            <div class="splash"></div>
+            
+            <!-- Emojis decorativos -->
+            <div class="candy-icon">🍭</div>
+            <div class="chili-icon">🌶️</div>
+            
+            <!-- Texto del logo -->
+            <div class="logo-text">KOKOK</div>
+            <div class="logo-subtitle">SPICY SWEETS</div>
+        </div>
+        
+        <div class="menu-title">
+            <h2>💥 Menú de Gomitas Enchiladas 💥</h2>
+        </div>
+        
+        <div class="menu-items">
+            <div class="item item-1">
+                <div class="item-info">
+                    <div class="item-name">Mangonazos</div>
+                    <div class="item-description">Deliciosos manguitos enchilados</div>
+                </div>
+                <div class="item-price">$25</div>
+            </div>
+            
+            <div class="item item-2">
+                <div class="item-info">
+                    <div class="item-name">Ositos traviesos</div>
+                    <div class="item-description">Ositos ácidos para disfrutar</div>
+                </div>
+                <div class="item-price">$25</div>
+            </div>
+            
+            <div class="item item-3">
+                <div class="item-info">
+                    <div class="item-name">Ositos chamoyosos</div>
+                    <div class="item-description">Ositos enchilados con chamoy</div>
+                </div>
+                <div class="item-price">$25</div>
+            </div>
+            
+            <div class="item item-4">
+                <div class="item-info">
+                    <div class="item-name">Frutibombas</div>
+                    <div class="item-description">Gomitas de frutitas enchiladas</div>
+                </div>
+                <div class="item-price">$25</div>
+            </div>
+            
+            <div class="item item-5">
+                <div class="item-info">
+                    <div class="item-name">Gusanos Loquillos</div>
+                    <div class="item-description">Gusanitos de gomita enchilados</div>
+                </div>
+                <div class="item-price">$25</div>
+            </div>
+            
+            <div class="item item-6">
+                <div class="item-info">
+                    <div class="item-name">Azulines</div>
+                    <div class="item-description">X-treams de mora azul</div>
+                </div>
+                <div class="item-price">$30</div>
+            </div>
+            
+            <div class="item item-7">
+                <div class="item-info">
+                    <div class="item-name">Colorines</div>
+                    <div class="item-description">X-treams multicolor arcoíris</div>
+                </div>
+                <div class="item-price">$30</div>
+            </div>
+            
+            <div class="item item-8">
+                <div class="item-info">
+                    <div class="item-name">ChiliManzanita</div>
+                    <div class="item-description">Manzanitas de gomita enchiladas</div>
+                </div>
+                <div class="item-price">$30</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            ¡KOKOK - Gomitas enchiladas que te explotarán de sabor! 🔥🍬🌶️
+        </div>
+    </div>
+
+    <script>
+        // Creación de burbujas decorativas para el logo y footer
+        function createBubbles() {
+            const logoContainer = document.querySelector('.logo-container');
+            const footer = document.querySelector('.footer');
+            const colors = ['#FF4500', '#4CAF50', '#FFD700', '#00CED1', '#FF6B6B', '#9C27B0'];
+            
+            // Burbujas para el logo
+            for (let i = 0; i < 20; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                
+                const size = Math.random() * 25 + 5;
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${left}%`;
+                bubble.style.top = `${top}%`;
+                bubble.style.backgroundColor = color;
+                bubble.style.opacity = Math.random() * 0.5 + 0.2;
+                bubble.style.animationDelay = `${Math.random() * 5}s`;
+                
+                logoContainer.appendChild(bubble);
+            }
+            
+            // Burbujas para el footer
+            for (let i = 0; i < 15; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                
+                const size = Math.random() * 20 + 5;
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${left}%`;
+                bubble.style.top = `${top}%`;
+                bubble.style.backgroundColor = color;
+                bubble.style.opacity = Math.random() * 0.5 + 0.2;
+                bubble.style.animationDelay = `${Math.random() * 5}s`;
+                
+                footer.appendChild(bubble);
+            }
+        }
+        
+        // Inicializar efectos
+        createBubbles();
+    </script>
+</body>
+</html>
