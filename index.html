@@ -305,6 +305,202 @@
                 box-shadow: none;
             }
         }
+        /* Media queries para responsividad */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .menu-card {
+        border-width: 5px;
+        border-radius: 20px;
+    }
+    
+    .logo-text {
+        font-size: 50px;
+    }
+    
+    .logo-subtitle {
+        font-size: 18px;
+        letter-spacing: 3px;
+    }
+    
+    .menu-title h2 {
+        font-size: 24px;
+        letter-spacing: 2px;
+    }
+    
+    .menu-items {
+        padding: 15px 20px;
+    }
+    
+    .item {
+        padding: 12px 15px;
+        margin-bottom: 20px;
+    }
+    
+    .item-name {
+        font-size: 18px;
+    }
+    
+    .item-name::before {
+        font-size: 24px;
+        margin-right: 10px;
+    }
+    
+    .item-price {
+        font-size: 20px;
+        padding: 5px 15px;
+        min-width: 80px;
+    }
+    
+    .footer {
+        font-size: 16px;
+        padding: 15px;
+    }
+    
+    .chili-icon, .candy-icon {
+        font-size: 35px;
+    }
+    
+    .splash {
+        width: 80px !important;
+        height: 80px !important;
+    }
+}
+
+/* Para móviles en vertical */
+@media screen and (max-width: 576px) {
+    body {
+        padding: 5px;
+        align-items: flex-start;
+    }
+    
+    .menu-card {
+        width: 100%;
+        border-width: 4px;
+        border-radius: 15px;
+    }
+    
+    .logo-container {
+        padding: 20px 15px;
+    }
+    
+    .logo-text {
+        font-size: 40px;
+        margin-bottom: 5px;
+    }
+    
+    .logo-subtitle {
+        font-size: 14px;
+        letter-spacing: 2px;
+        padding: 3px 10px;
+    }
+    
+    .menu-title {
+        padding: 12px 0;
+    }
+    
+    .menu-title h2 {
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+    
+    .menu-items {
+        padding: 10px 15px;
+    }
+    
+    .item {
+        padding: 10px 12px;
+        margin-bottom: 15px;
+        flex-direction: row;
+        align-items: center;
+        border-left-width: 5px;
+    }
+    
+    .item-info {
+        padding-right: 10px;
+        flex: 1;
+    }
+    
+    .item-name {
+        font-size: 16px;
+        flex-wrap: nowrap;
+        white-space: normal;
+        width: 100%;
+    }
+    
+    .item-name::before {
+        font-size: 20px;
+        margin-right: 8px;
+    }
+    
+    .item-description {
+        font-size: 12px;
+        margin-top: 3px;
+    }
+    
+    .item-price {
+        font-size: 16px;
+        padding: 4px 10px;
+        min-width: 60px;
+        flex-shrink: 0;
+    }
+    
+    .footer {
+        font-size: 14px;
+        padding: 12px;
+    }
+    
+    .chili-icon {
+        font-size: 28px;
+        right: 10%;
+    }
+    
+    .candy-icon {
+        font-size: 28px;
+        left: 10%;
+    }
+    
+    .splash {
+        width: 60px !important;
+        height: 60px !important;
+    }
+}
+
+/* Para teléfonos muy pequeños */
+@media screen and (max-width: 350px) {
+    .logo-text {
+        font-size: 32px;
+    }
+    
+    .logo-subtitle {
+        font-size: 12px;
+    }
+    
+    .menu-title h2 {
+        font-size: 16px;
+    }
+    
+    .item-name {
+        font-size: 14px;
+    }
+    
+    .item-description {
+        font-size: 11px;
+    }
+    
+    .item-name::before {
+        font-size: 18px;
+        margin-right: 5px;
+    }
+    
+    .item-price {
+        font-size: 14px;
+        padding: 3px 8px;
+        min-width: 50px;
+    }
+}
     </style>
 </head>
 <body>
